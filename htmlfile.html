@@ -1,0 +1,450 @@
+
+
+
+
+<html>
+
+  <head>
+
+    <title>The Ultimate Weather App</title>
+
+<script src="//www.google.com/jsapi?key=ABQIAAAAuPsJpk3MBtDpJ4G8cqBnjRRaGTYH6UMl8mADNa0YKuWNNa8VNxQCzVBXTx2DYyXGsTOxpWhvIG7Djw" type="text/javascript"></script>
+    <script type="text/javascript">
+      function addSampleButton(caption, clickHandler) {
+        var btn = document.createElement('input');
+        btn.type = 'button';
+        btn.value = caption;
+        
+        if (btn.attachEvent)
+          btn.attachEvent('onclick', clickHandler);
+        else
+          btn.addEventListener('click', clickHandler, false);
+
+        // add the button to the Sample UI
+        document.getElementById('sample-ui').appendChild(btn);
+      }
+      
+      function addSampleUIHtml(html) {
+        document.getElementById('sample-ui').innerHTML += html;
+      }
+    </script>
+
+    <script type="text/javascript">
+    var ge;
+    
+    // store the object loaded for the given file... initially none of the objects
+    // are loaded, so initialize these to null //<iframe width='100%'
+    var currentKmlObjects = {
+      'sst': null,
+      'tpw': null,
+      'rain': null,
+      'clw': null,
+      'ws': null
+    };
+    
+    google.load("earth", "1");
+    
+    function init() {
+      google.earth.createInstance('map3d', initCallback, failureCallback);
+    
+      addSampleUIHtml(
+        '<font size="6"><b>All 5 Precipitation Types' +
+        '<table width ="50%">' +
+        '<tr>' +
+        '<th></th>' +
+        '<th></th>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>' +
+        '<input type="checkbox" id="earth" onclick="toggleKml(\'earth\');"/><label for="earth">Current Precipitation Type</label><br/>' +
+
+        '</td>' +
+        '<td>' +
+        '<input type="checkbox" id="pax" onclick="toggleKml(\'pax\');"/><label for="pax">Winter Storm Pax (Feb 2014)</label><br/>' +
+
+        '</table>' );
+    }
+    
+
+    function initCallback(instance) {
+      ge = instance;
+      ge.getWindow().setVisibility(true);
+    
+      // add a navigation control
+      ge.getNavigationControl().setVisibility(ge.VISIBILITY_AUTO);
+    
+      // add some layers
+      geteLink('');
+ 	 ge.getLayerRoot().enableLayerById(ge.LAYER_BORDERS, true);
+      //ge.getLayerRoot().enableLayerById(ge.LAYER_ROADS, true);
+     
+    
+      // if the page loaded with checkd boxes..
+      if (document.getElementByID('allstorms').checked)
+      	loadKml('allstorms')
+
+      if (document.getElementById('earth').checked)
+        loadKml('earth');
+    
+      if (document.getElementById('pax').checked)
+        loadKml('pax');
+    
+      if (document.getElementById('euclid').checked)
+        loadKml('euclid');
+      
+      if (document.getElementById('clw1').checked)
+        loadKml('clw1');
+      
+      if (document.getElementById('ws1').checked)
+        loadKml('ws1');
+
+
+      if (document.getElementById('tpw2').checked)
+              loadKml('tpw2');
+
+      if (document.getElementById('rain2').checked)
+              loadKml('rain2');
+
+      if (document.getElementById('clw2').checked)
+              loadKml('clw2');
+
+      if (document.getElementById('ws2').checked)
+              loadKml('ws2');
+
+        ge.getPluginVersion().toString();
+    }
+    
+    function failureCallback(errorCode) {
+    }
+    
+    function toggleKml(file) {
+      // remove the old KML object if it exists
+      if (currentKmlObjects[file]) {
+        ge.getFeatures().removeChild(currentKmlObjects[file]);
+        currentKmlObject = null;
+      }
+    
+      // if the checkbox is checked, fetch the KML and show it on Earth
+      var kmlCheckbox = document.getElementById(file);
+      if (kmlCheckbox.checked)
+        loadKml(file);
+    }
+    
+    function loadKml(file) {
+      var kmlUrl = 'http://geocities.ws/radar/' + file + '.kml';
+    
+      // fetch the KML
+      google.earth.fetchKml(ge, kmlUrl, function(kmlObject) {
+        // NOTE: we still have access to the 'file' variable (via JS closures)
+    
+        if (kmlObject) {
+          // show it on Earth
+          currentKmlObjects[file] = kmlObject;
+          ge.getFeatures().appendChild(kmlObject);
+        } else {
+          // bad KML
+          currentKmlObjects[file] = null;
+    
+          // wrap alerts in API callbacks and event handlers
+          // in a setTimeout to prevent deadlock in some browsers
+          setTimeout(function() {
+            alert('Bad or null KML.');
+          }, 0);
+    
+          // uncheck the box
+          document.getElementById('kml-' + file + '-check').checked = '';
+        }
+      });
+    }
+    
+    </script>
+  </head>
+  <body onload="init()"  bgcolor="#000000" text="white" link="white" vlink="white"><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<center>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26341965-1']);
+  _gaq.push(['_setDomainName', '.geocities.ws']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<b><font size="6">
+Past<br>
+<iframe src="http://forecast.io" height="800" width="1000" frameborder="0"></iframe>
+<br><br><br>  
+
+Present<br>
+<iframe src="http://www.wunderground.com/wundermap/" height="800" width="1000" frameborder="0"></iframe>
+<br><br><br>
+
+Future<br>
+<iframe src="http://www.weathertrends360.com/" height="800" width="1000" frameborder="0"></iframe>
+<br><br><br>
+
+Consensus Forecast<br>
+<iframe src="http://cms.met.psu.edu/sref/ensembles/" height="800" width="1000" frameborder="0"></iframe>
+<br><br><br>
+
+
+    <div id="sample-ui"></div>
+    <div id="map3d" style="width: 1000px; height: 600px;"></div>
+    <br>
+    <div><span id="installed-plugin-version" style="font-weight: bold;"></span></div>
+<b><font size="3">Dark Blue=Snow. Light Blue=Ice Pellets. Green=Freezing Rain. Orange=Rain. Burgundy=Hail.</b><br><br>
+<table>
+<tr>
+<td>For Current, the shaded region is where precipitation has fallen since 0Z.</td>
+<td><a href=" http://www.geocities.ws/radar/home.html">Website on Global Rainfall Return Periods</a></td>
+</tr>
+<tr>
+<td>For Winter Storm Pax, the shaded region is where precipitation fell from 0Z February 13 to 0Z February 14.</td>
+<td><a href="http://x.co/5eF3o">Hurricane Sandy Report</a></td>
+</tr>
+<tr>
+<td>This is using <i>actual observations</i> not radar estimates.</td>
+<td><a href="https://docs.google.com/a/cornell.edu/document/d/1pjcf_VK2GpxHEugDhwY0g3XUSKkL7nygoFXEaKMv5Ec/edit">Types of Precipitation Events</a></td>
+</tr>
+
+</table>
+<br><br><br><br>
+
+<center>
+<b><font size="6">Historical Precipitation Types<br>
+<iframe src="http://cdb.io/1xdniSS" height="800" width="1000" frameborder="0"></iframe><br><br><br>
+
+
+<!-- Hosted by www.Geocities.ws -->
