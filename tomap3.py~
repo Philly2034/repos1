@@ -1,0 +1,22 @@
+print "Starting tomap"
+import numpy as np
+import matplotlib.pyplot as plt
+
+b=open('distance3.csv')
+a=open('map3.csv','w+')
+
+print "opened files"
+
+line=b.readline()
+with open('distance3.csv') as b:
+	for line in b:
+		if not line.strip():
+			continue
+		time=float(line[1:9])
+		x=float(line[11:18])
+		y=float(line[19:26])
+		colors=float(line[29:31])
+		print >> a,time,"%05.1f"% x,"%06.1f"% y,colors
+print "Done tomap"
+
+

@@ -1,0 +1,8 @@
+
+f=open('grid3.csv','w+')
+for i in range(1800):
+	lat=-90+0.1*i
+	for j in range(3600):
+		lon=-180+0.1*j
+
+		print >> f,"%06.2f"% lat, "%06.2f"% lon

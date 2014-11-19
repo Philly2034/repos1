@@ -1,0 +1,82 @@
+First Step
+1 Scrape Complete
+2 Reduce Complete
+3 Split Complete
+4 Format Complete
+5 Hailfor complete
+6 Combine Complete
+8 Compare Complete
+Starting tomap
+Traceback (most recent call last):
+  File "tomap.py", line 3, in <module>
+    import matplotlib.pyplot as plt
+  File "/usr/lib64/python2.6/site-packages/matplotlib/pyplot.py", line 78, in <module>
+    new_figure_manager, draw_if_interactive, show = pylab_setup()
+  File "/usr/lib64/python2.6/site-packages/matplotlib/backends/__init__.py", line 25, in pylab_setup
+    globals(),locals(),[backend_name])
+  File "/usr/lib64/python2.6/site-packages/matplotlib/backends/backend_gtkagg.py", line 10, in <module>
+    from matplotlib.backends.backend_gtk import gtk, FigureManagerGTK, FigureCanvasGTK,\
+  File "/usr/lib64/python2.6/site-packages/matplotlib/backends/backend_gtk.py", line 8, in <module>
+    import gtk; gdk = gtk.gdk
+  File "/usr/lib64/python2.6/site-packages/gtk-2.0/gtk/__init__.py", line 64, in <module>
+    _init()
+  File "/usr/lib64/python2.6/site-packages/gtk-2.0/gtk/__init__.py", line 52, in _init
+    _gtk.init_check()
+RuntimeError: could not open display
+9 To Map complete
+Starting map.py
+Opened Files
+got data
+done map.py
+10 Map Complete
+11 Upload Complete
+First Step
+1 Scrape Complete
+2 Reduce Complete
+3 Split Complete
+4 Format Complete
+5 Hailfor complete
+6 Combine Complete
+8 Compare Complete
+Starting tomap
+opened files
+Done tomap
+9 To Map complete
+Starting map.py
+Opened Files
+got data
+done map.py
+10 Map Complete
+11 Upload Complete
+First Step
+1 Scrape Complete
+2 Reduce Complete
+3 Split Complete
+4 Format Complete
+5 Hailfor complete
+6 Combine Complete
+8 Compare Complete
+Starting tomap
+opened files
+Traceback (most recent call last):
+  File "tomap.py", line 15, in <module>
+    x=float(line[0:7])
+ValueError: empty string for float()
+9 To Map complete
+/usr/lib64/python2.6/site-packages/numpy/lib/npyio.py:795: UserWarning: loadtxt: Empty input file: "<open file 'map.csv', mode 'r' at 0x1b21c90>"
+  warnings.warn('loadtxt: Empty input file: "%s"' % fname)
+Starting map.py
+Opened Files
+Traceback (most recent call last):
+  File "map.py", line 15, in <module>
+    y=var[:,0:1]
+IndexError: too many indices
+10 Map Complete
+11 Upload Complete
+First Step
+1 Scrape Complete
+2 Reduce Complete
+3 Split Complete
+4 Format Complete
+5 Hailfor complete
+6 Combine Complete

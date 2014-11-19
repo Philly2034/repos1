@@ -1,0 +1,75 @@
+f=open('format.csv')
+g=open('mping.csv','w+')
+line=f.readline()
+with open('format.csv') as f:
+	for line in f:
+		if not line.strip():
+			continue
+		tim=line[0:6]
+		lat=line[7:13]
+		lon=line[14:20]
+		pre=float(line[21:23])
+		if pre==1.0:
+			pre='05'
+		if pre==2.0:
+			pre='05'
+		if pre==3.0:
+			pre='45'
+		if pre==4.0:
+			pre='45'
+		if pre==5.0:
+			pre='35'
+		if pre==6.0:
+			pre='45'
+		if pre==7.0:
+			pre='15'
+		if pre==8.0:
+			pre='15'
+		if pre==9.0:
+			pre='15'
+		if pre==10.0:
+			pre='15'
+		if pre==11.0:
+			pre='15'
+		if pre==12.0:
+			pre='25'
+		if pre==19.0:
+			pre='55'
+		if pre==20.0:
+			pre='55'
+		if pre==24.0:
+			pre='55'
+		print >> g,tim,lat,lon,pre
+
+
+
+#		if pre=='01':
+#			pre='05'
+#		if pre=='02':
+#			pre='05'
+#		if pre=='03':
+#			pre='45'
+#		if pre=='04':
+#			pre='45'
+#		if pre=='05':
+#			pre='35'
+#		if pre=='06':
+#			pre='45'
+#		if pre=='07':
+#			pre='15'
+#		if pre=='08':
+#			pre='15'
+#		if pre=='09':
+#			pre='15'
+#		if pre=='10':
+#			pre='15'
+#		if pre=='11':
+#			pre='15'
+#		if pre=='12':
+#			pre='25'
+#		if pre=='19':
+#			pre='55'
+#		if pre=='20':
+#			pre='55'
+#		if pre=='24':
+#			pre='55'

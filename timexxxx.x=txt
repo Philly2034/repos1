@@ -1,0 +1,44 @@
+		if months<0.:
+			months=1
+		if months>0.:
+			months=mins-31*1440-28*1440
+			if months<0:
+				months=2
+			if months>0:
+				months=mins-31*1440-28*1440-31*1440
+				if months<0:
+					months=3
+				if months>0:
+					months=mins-31*1440-28*1440-31*1440-30*1440
+					if months<0:
+						months=4.
+					if months>0:		
+						months=mins-31.*1440.-28.*1440.-31.*1440.-30.*1440.-31.*1440.
+						if months<0:
+							months=5
+						if months>0.:
+							months=mins-31.*1440.-28.*1440.-31.*1440.-30.*1440.-31.*1440.-30.*1440
+							if months<0.:
+								months=6.
+							if months>0:
+								months=mins-31.*1440.-28.*1440.-31.*1440.-30.*1440.-31.*1440.-30.*1440-31*1440
+								if months<0.:
+									months-7.
+								if months>0:
+									months=mins-31.*1440.-28.*1440.-31.*1440.-30.*1440.-31.*1440.-30.*1440-31*1440-31*1440
+									if months<0:
+										months=8.	
+									if months>0:
+										months=mins-31.*1440.-28.*1440.-31.*1440.-30.*1440.-31.*1440.-30.*1440-31*1440-31*1440-30*1440
+										if months<0:
+											months=9.
+										if months>0.:	
+											months=mins-31.*1440.-28.*1440.-31.*1440.-30.*1440.-31.*1440.-30.*1440-31*1440-31*1440-30*1440-31*1440
+											if months<0:
+												months=10
+											if months>0.:
+												months=mins-31.*1440.-28.*1440.-31.*1440.-30.*1440.-31.*1440.-30.*1440-31*1440-31*1440-30*1440-31*1440-30*1440
+												if months<0:
+													months=11.
+												if months>0:
+													months=12.

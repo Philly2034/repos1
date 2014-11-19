@@ -1,0 +1,44 @@
+while true
+do
+	echo "First Step"
+	sleep 1
+	python scrape3.py
+	sleep 1
+	python reduce3.py
+	echo "2 Reduce Complete"
+	sleep 1
+	python split3.py
+	echo "3 Split Complete"
+	sleep 1
+	python format3.py
+	echo "4 Format Complete"
+	sleep 1
+	python hailfor3.py
+	echo "5 Hailfor complete"
+	sleep 1
+	python combine3.py
+	echo "6 Combine Complete"
+	sleep 1
+	python uniq3.py
+	echo "7 Unique Complete"
+	sleep 1	
+	python compare3.py
+	echo "8 Compare Complete"
+	sleep 1
+	python tomap3.py
+	echo "9 To Map Complete"
+	sleep 1
+	python todate3.py
+	echo "10 To Date Complete"
+	sleep 1
+	python days3.py
+	echo "11 To Days complete"
+	sleep 1
+	python sync3.py
+	echo "12 Sync Complete"
+	sleep 1
+	python test3.py
+	echo "13 Upload Complete"
+	sleep 3600
+done
+

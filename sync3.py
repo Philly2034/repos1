@@ -1,0 +1,14 @@
+a=open('days3.csv')
+b=open('sync3.csv','w+')
+print >>b,"time","latitude","longitude","precipitation"
+line=a.readline()
+with open('days3.csv') as a:
+	for line in a:
+		if not line.strip():
+			continue
+		time=line[0:27]
+		time=time.replace(" ","")
+		lat=line[28:33]
+		lon=line[34:40]
+		pre=line[41:45]
+		print>>b,time,lat,lon,pre
